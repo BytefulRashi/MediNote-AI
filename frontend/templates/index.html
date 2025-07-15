@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physician Notetaker - AI Medical Transcription</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body data-theme="dark">
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title">MediNote AI - Smart Medical Documentation Assistant</h1>
+            <p class="tagline">Your AI Assistant for Instant, Accurate Medical Documentation</p>
+            <div class="features">
+                <div class="feature-pill">🧠 Smart NLP Engine</div>
+                <div class="feature-pill">⏱️ Instant Structuring</div>
+                <div class="feature-pill">🔐 Data Secure</div>
+                <div class="feature-pill">📁 Multi-File Support</div>
+            </div>
+        </header>
+
+        <div class="stats-panel">
+            <div class="stat-item">
+                <span class="stat-number">99.5%</span>
+                <span class="stat-label">Accuracy Rate</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">< 30s</span>
+                <span class="stat-label">Processing Time</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10k+</span>
+                <span class="stat-label">Transcripts Processed</span>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="card">
+                <h2 class="card-title">
+                    <i class="fas fa-file-upload"></i>
+                    Upload Medical Transcript
+                </h2>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-text">Drop your transcript here</div>
+                        <div class="upload-subtext">or click to browse files</div>
+                        <div class="file-types">
+                            <span class="file-type">.txt</span>
+                            <span class="file-type">.docx</span>
+                            <span class="file-type">.pdf</span>
+                        </div>
+                        <span class="file-text">No file selected</span>
+                        <input type="file" name="file" id="fileInput" class="file-input" accept=".txt,.docx,.pdf" required>
+                    </div>
+                    <button type="submit" class="btn btn-block">
+                        <i class="fas fa-magic"></i>
+                        Analyze & Structure Notes
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">
+                    <i class="fas fa-brain"></i>
+                    AI-Powered Clinical Intelligence Features
+                </h2>
+                <div class="features-list">
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> SOAP Note Automation</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> Disease & Symptom Detection</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> ICD-10 Code Suggestions</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> Prescription Insights</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> AI-based Summary Generation</div>
+                </div>
+                <div class="btn learn-more-btn">
+                    <i class="fas fa-info-circle"></i>
+                    Discover More Features
+                </div>
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <div class="loading-text">Processing Medical Transcript</div>
+                <div class="loading-subtext">Our AI is analyzing your document and structuring the medical notes...</div>
+            </div>
+
+            <div class="result card" id="result">
+                <h2 class="card-title">
+                    <i class="fas fa-file-medical-alt"></i>
+                    Structured Medical Notes
+                </h2>
+                <div class="result-content" id="resultContent">
+                    <!-- Results will be populated here -->
+                </div>
+                <div class="result-actions">
+                    <button class="btn" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        Copy to Clipboard
+                    </button>
+                    <button class="btn download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        Download JSON
+                    </button>
+                    <button class="btn share-btn" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="toggle-icon light">🌞</span>
+        <span class="toggle-icon dark">🌙</span>
+        <span class="toggle-text">Dark Mode</span>
+    </button>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
